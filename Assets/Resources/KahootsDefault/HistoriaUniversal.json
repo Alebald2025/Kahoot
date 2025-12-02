@@ -1,0 +1,16 @@
+{
+  "id": 1,
+  "title": "Historia Universal",
+  "questions": [
+    {
+      "questionText": "¿Quién descubrió América?",
+      "answers": ["Cristóbal Colón", "Marco Polo", "Magallanes", "Américo Vespucio"],
+      "correctIndex": 0
+    },
+    {
+      "questionText": "¿En qué año comenzó la Primera Guerra Mundial?",
+      "answers": ["1912", "1914", "1916", "1918"],
+      "correctIndex": 1
+    }
+  ]
+}
