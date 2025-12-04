@@ -14,4 +14,5 @@ public class Question
     public string questionText;
     public List<string> answers;
     public int correctIndex;
+    public string imageName;
 }

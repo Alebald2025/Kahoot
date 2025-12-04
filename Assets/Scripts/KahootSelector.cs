@@ -58,9 +58,5 @@ public class KahootSelector : MonoBehaviour
         UnityEngine.SceneManagement.SceneManager.LoadScene("GameScene");
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+
 }

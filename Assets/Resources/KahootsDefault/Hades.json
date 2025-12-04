@@ -5,12 +5,14 @@
     {
       "questionText": "¿Quién descubrió América?",
       "answers": ["Cristóbal Colón", "Marco Polo", "Magallanes", "Américo Vespucio"],
-      "correctIndex": 0
+      "correctIndex": 0,
+      "imageName": "colon"
     },
     {
       "questionText": "¿En qué año comenzó la Primera Guerra Mundial?",
       "answers": ["1912", "1914", "1916", "1918"],
-      "correctIndex": 1
+      "correctIndex": 1,
+      "imageName": "colon"
     }
   ]
 }
