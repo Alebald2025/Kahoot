@@ -20,15 +20,23 @@ public class GameManager : MonoBehaviour
     private float timeRemaining;
     private bool answered = false;
 
+    private int currentScore = 0;
+    private float questionStartTime;
+
+    public TMP_Text scoreText;  
+
     void Start()
     {
         string json = PlayerPrefs.GetString("SelectedKahoot");
         kahoot = JsonUtility.FromJson<KahootData>(json);
         ShowQuestion();
+        scoreText.text = "Puntuación: 0";
     }
 
     private void ShowQuestion()
     {
+        questionStartTime = Time.time;
+
         answered = false;
         timeRemaining = timePerQuestion;
 
@@ -80,6 +88,20 @@ public class GameManager : MonoBehaviour
         Question q = kahoot.questions[currentQuestionIndex];
         bool isCorrect = selectedIndex == q.correctIndex;
 
+        if (isCorrect)
+        {
+            float elapsed = Time.time - questionStartTime;
+            if (elapsed >= 10f)
+            {
+                currentScore += 50; 
+            }
+            else
+            {
+                currentScore += 100; 
+            }
+            scoreText.text = "Puntuación: " + currentScore;
+        }
+
         ShowCorrectAnswer();
 
         StartCoroutine(NextQuestionDelay());
@@ -107,6 +129,7 @@ public class GameManager : MonoBehaviour
         }
         else
         {
+            PlayerPrefs.SetInt("FinalScore", currentScore);
             UnityEngine.SceneManagement.SceneManager.LoadScene("ResultsScene");
         }
     }
