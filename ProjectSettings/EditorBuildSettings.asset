@@ -8,4 +8,19 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/SampleScene.unity
     guid: 2cda990e2423bbf4892e6590ba056729
+  - enabled: 1
+    path: Assets/Scenes/QuizzesSelector.unity
+    guid: 9e5139bbf7a05e140a415fffd780e8c2
+  - enabled: 1
+    path: Assets/Scenes/GameScene.unity
+    guid: 361749cc3a9c4e4498a1447b89fdfa23
+  - enabled: 1
+    path: Assets/Scenes/Informes.unity
+    guid: 86cf11f06a8c18c42858499b3c6e97cb
+  - enabled: 1
+    path: Assets/Scenes/AcercaDe.unity
+    guid: c2edf5fc150fdb240872dcd71f39aeb7
+  - enabled: 1
+    path: Assets/Scenes/MainMenu.unity
+    guid: d901e94c1707ca74cb334fdec6f2f442
   m_configObjects: {}
