@@ -3,14 +3,34 @@
   "title": "Blasphemous",
   "questions": [
     {
-      "questionText": "¿Quién descubrió América?",
-      "answers": ["Cristóbal Colón", "Marco Polo", "Magallanes", "Américo Vespucio"],
-      "correctIndex": 0
+      "questionText": "¿Como se llame esta cuenta de rosario?",
+      "answers": ["Uva de plata", "Musgo", "Trozo de lápida", "Bola de cera roja"],
+      "correctIndex": 3,
+      "imageName": "BolaCeraRosa"
     },
     {
-      "questionText": "¿En qué año comenzó la Primera Guerra Mundial?",
-      "answers": ["1912", "1914", "1916", "1918"],
-      "correctIndex": 1
+      "questionText": "¿Como se llama esta reliquia?",
+      "answers": ["Uña arrancada del barro", "Pulmón Plateado de Dolfos", "Tres Lenguas Nudosas", "Lienzo de Hilo de Oro"],
+      "correctIndex": 2,
+      "imageName": "LenguasNudosas"
+    },
+    {
+      "questionText": "¿Como se llama este jefe?",
+      "answers": ["Quirce", "Esdras", "Ten Piedad", "Crisanta"],
+      "correctIndex": 3,
+      "imageName": "Crisanta"
+    },
+    {
+      "questionText": "¿Como se llama este personaje?",
+      "answers": ["Redento", "Candelaria", "Viridiana", "Gémino"],
+      "correctIndex": 0,
+      "imageName": "Redento"
+    },
+    {
+      "questionText": "¿Cuantos finales tiene Blasphemous?",
+      "answers": ["1", "2", "3", "4"],
+      "correctIndex": 2,
+      "imageName": "2"
     }
   ]
 }

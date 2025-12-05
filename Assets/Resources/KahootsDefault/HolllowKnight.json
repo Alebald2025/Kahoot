@@ -1,16 +1,36 @@
 {
-  "id": 3,
+  "id": 2,
   "title": "Hollow Knight",
   "questions": [
     {
-      "questionText": "¿Quién descubrió América?",
-      "answers": ["Cristóbal Colón", "Marco Polo", "Magallanes", "Américo Vespucio"],
-      "correctIndex": 0
+      "questionText": "Como se llama la ciudad principal",
+      "answers": ["Bocasucia", "Cuidad de lágrimas", "Cruces Olvidados", "Nidroprofundo"],
+      "correctIndex": 0,
+      "imageName": "MapaHollownest"
     },
     {
-      "questionText": "¿En qué año comenzó la Primera Guerra Mundial?",
-      "answers": ["1912", "1914", "1916", "1918"],
-      "correctIndex": 1
+      "questionText": "¿Como se llama este jefe?",
+      "answers": ["Caballero Pálido", "Caballero Gris", "Falso Caballero", "Verdadero Caballero"],
+      "correctIndex": 2,
+      "imageName": "FalsoCab"
+    },
+    {
+      "questionText": "¿Como se llaman estos 3?",
+      "answers": ["Paco, Juan y Marcos", "Oro, Mato y Sheo", "N/A", "Isma, Grimm, y Zote"],
+      "correctIndex": 1,
+      "imageName": "OroMatoSheo"
+    },
+    {
+      "questionText": "¿Cual es el nombre del jefe final?",
+      "answers": ["Quirrel", "El Vacio", "The Radiance", "Vasija Pura"],
+      "correctIndex": 2,
+      "imageName": "Radiance"
+    },
+    {
+      "questionText": "¿Cual es el nombre de este amuleto?",
+      "answers": ["Largoaguijón", "Tremanido", "Espinas de agonía", "Marca de Orgullo"],
+      "correctIndex": 2,
+      "imageName": "MarcaOrgullo"
     }
   ]
 }

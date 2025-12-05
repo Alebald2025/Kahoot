@@ -3,16 +3,34 @@
   "title": "Hades",
   "questions": [
     {
-      "questionText": "¿Quién descubrió América?",
-      "answers": ["Cristóbal Colón", "Marco Polo", "Magallanes", "Américo Vespucio"],
-      "correctIndex": 0,
-      "imageName": "colon"
+      "questionText": "¿Quién es este personaje?",
+      "answers": ["Artemisa", "Hades", "Ares", "Atenea"],
+      "correctIndex": 2,
+      "imageName": "Ares"
     },
     {
-      "questionText": "¿En qué año comenzó la Primera Guerra Mundial?",
-      "answers": ["1912", "1914", "1916", "1918"],
-      "correctIndex": 1,
-      "imageName": "colon"
+      "questionText": "¿Cúal es el nombre de esta arma infernal?",
+      "answers": ["Estigiana", "Varatea", "Coronacto", "Exagrifo"],
+      "correctIndex": 0,
+      "imageName": "Estigiana"
+    },
+    {
+      "questionText": "¿Nombre de este artefacto?",
+      "answers": ["Gemas", "Oscuridad", "Néctar", "Llave ctónica"],
+      "correctIndex": 2,
+      "imageName": "Nectar"
+    },
+    {
+      "questionText": "¿Que botín da este jefe?",
+      "answers": ["Ambrosía", "Diamante", "Sangre de titán", "Oscuridad"],
+      "correctIndex": 0,
+      "imageName": "Ambrosia"
+    },
+    {
+      "questionText": "¿Nombre de este jefe?",
+      "answers": ["Megara", "Hidra", "Teseo", "Asterión"],
+      "correctIndex": 3,
+      "imageName": "Asterion"
     }
   ]
 }
