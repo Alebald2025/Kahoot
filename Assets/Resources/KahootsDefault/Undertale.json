@@ -1,16 +1,36 @@
 {
-  "id": 5,
+  "id": 7,
   "title": "Undertale",
   "questions": [
     {
-      "questionText": "¿Quién descubrió América?",
-      "answers": ["Cristóbal Colón", "Marco Polo", "Magallanes", "Américo Vespucio"],
-      "correctIndex": 0
+      "questionText": "¿Como se llama este personaje?",
+      "answers": ["Sans", "Alphys", "Undyne", "Asgore"],
+      "correctIndex": 2,
+      "imageName": "Undyne"
     },
     {
-      "questionText": "¿En qué año comenzó la Primera Guerra Mundial?",
-      "answers": ["1912", "1914", "1916", "1918"],
-      "correctIndex": 1
+      "questionText": "¿En que ruta puedes pelear contra sans?",
+      "answers": ["Genocida", "Pacifica", "Neutral", "Todas las anteriores"],
+      "correctIndex": 0,
+      "imageName": "Rutas"
+    },
+    {
+      "questionText": "¿Cual es el nombre de esta zona?",
+      "answers": ["Ruins", "Snowdin", "Waterfall", "New Home"],
+      "correctIndex": 3,
+      "imageName": "NewHome"
+    },
+    {
+      "questionText": "¿Que significa LV en Undertale?",
+      "answers": ["Love", "Level", "Level of Violence", "Love Viejitas"],
+      "correctIndex": 2,
+      "imageName": "Level"
+    },
+    {
+      "questionText": "¿Que significa EXP?",
+      "answers": ["Execution Points", "Experience", "Experto en papas", "N/A"],
+      "correctIndex": 0,
+      "imageName": "Level"
     }
   ]
 }
