@@ -2,7 +2,7 @@
 - Project name: KahootGit
 - Unity version: Unity 2022.3.45f1
 - Active game object:
-  - Name: Canvas
+  - Name: InformesManager
   - Tag: Untagged
-  - Layer: UI
+  - Layer: Default
 <!-- UNITY CODE ASSIST INSTRUCTIONS END -->
