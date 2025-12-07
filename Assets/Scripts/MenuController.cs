@@ -20,6 +20,7 @@ public class MenuController : MonoBehaviour
 
     public void SalirDelJuego()
     {
+        Debug.Log(Application.persistentDataPath);
         Debug.Log("Saliendo del juego...");
         Application.Quit();
     }

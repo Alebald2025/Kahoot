@@ -15,10 +15,18 @@ public class KahootSelector : MonoBehaviour
 
     private string persistentPath => Application.persistentDataPath + "/Kahoots/";
 
-    void Start()
+    public void RefreshKahootList()
     {
+        // Limpia botones anteriores
+        foreach (Transform child in buttonContainer) Destroy(child.gameObject);
+
         LoadKahootsFromResources();
         LoadKahootsFromPersistentData();
+    }
+
+    void Start()
+    {
+        RefreshKahootList();
     }
 
     void LoadKahootsFromPersistentData()
