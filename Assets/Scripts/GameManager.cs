@@ -62,6 +62,17 @@ public class GameManager : MonoBehaviour
         {
             questionImage.gameObject.SetActive(false);
         }
+
+        if (!string.IsNullOrEmpty(q.imageName))
+        {
+            Sprite img = Resources.Load<Sprite>("QuestionImages/" + q.imageName);
+            if (img == null)
+            {
+                ErrorReporter.Report("No se encontró la imagen: " + q.imageName + " en la pregunta " + currentQuestionIndex);
+            }
+            questionImage.sprite = img;
+            questionImage.gameObject.SetActive(img != null);
+        }
     }
 
     void Update()
@@ -100,6 +111,12 @@ public class GameManager : MonoBehaviour
                 currentScore += 100; 
             }
             scoreText.text = "Puntuación: " + currentScore;
+        }
+
+        if (selectedIndex >= q.answers.Count)
+        {
+            ErrorReporter.Report("Índice de respuesta fuera de rango en la pregunta " + currentQuestionIndex);
+            return;
         }
 
         ShowCorrectAnswer();

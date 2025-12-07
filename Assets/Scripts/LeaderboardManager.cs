@@ -69,12 +69,24 @@ public class LeaderboardManager : MonoBehaviour
 
     ResultList LoadResults(string path)
     {
-        if (!File.Exists(path)) return new ResultList();
-
-        XmlSerializer serializer = new XmlSerializer(typeof(ResultList));
-        using (FileStream stream = new FileStream(path, FileMode.Open))
+        if (!File.Exists(path))
         {
-            return (ResultList)serializer.Deserialize(stream);
+            ErrorReporter.Report("Archivo de resultados no encontrado: " + path);
+            return new ResultList();
+        }
+
+        try
+        {
+            XmlSerializer serializer = new XmlSerializer(typeof(ResultList));
+            using (FileStream stream = new FileStream(path, FileMode.Open))
+            {
+                return (ResultList)serializer.Deserialize(stream);
+            }
+        }
+        catch (System.Exception e)
+        {
+            ErrorReporter.Report("Error al leer resultados desde " + path + ": " + e.Message);
+            return new ResultList();
         }
     }
 }
