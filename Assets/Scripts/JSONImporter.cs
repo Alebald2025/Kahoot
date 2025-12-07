@@ -7,51 +7,59 @@ using UnityEngine.UI;
 
 public class JSONImporter : MonoBehaviour
 {
-    public Button importButton;
     public GameObject notificationPanel;
     public TMP_Text notificationText;
 
-    private string kahootPath => Application.persistentDataPath + "/Kahoots/";
+    private string kahootPath => Path.Combine(Application.persistentDataPath, "Kahoots");
+    private string[] lastFiles;
 
     void Start()
     {
-        if (!Directory.Exists(kahootPath)) Directory.CreateDirectory(kahootPath);
-        importButton.onClick.AddListener(ImportJson);
+        if (!Directory.Exists(kahootPath))
+            Directory.CreateDirectory(kahootPath);
+
+        // Guardar estado inicial
+        lastFiles = Directory.GetFiles(kahootPath, "*.json");
+
+        // Ocultar panel al inicio
         notificationPanel.SetActive(false);
+
+        // Revisar cada 2 segundos si hay cambios
+        InvokeRepeating(nameof(CheckForNewFiles), 2f, 2f);
     }
 
-    void ImportJson()
+    void CheckForNewFiles()
     {
-#if UNITY_EDITOR || UNITY_STANDALONE
-        string filePath = UnityEditor.EditorUtility.OpenFilePanel("Selecciona un Kahoot JSON", "", "json");
+        string[] currentFiles = Directory.GetFiles(kahootPath, "*.json");
 
-        if (!string.IsNullOrEmpty(filePath))
+        // Detectar si hay más archivos que antes
+        if (currentFiles.Length > lastFiles.Length)
         {
-            string fileName = Path.GetFileName(filePath);
-            string destPath = Path.Combine(kahootPath, fileName);
+            // Buscar cuál es nuevo
+            foreach (string file in currentFiles)
+            {
+                if (System.Array.IndexOf(lastFiles, file) == -1)
+                {
+                    string fileName = Path.GetFileName(file);
 
-            File.Copy(filePath, destPath, true);
+                    // Refrescar lista de Kahoots
+                    FindObjectOfType<KahootSelector>().RefreshKahootList();
 
-            // Refrescar lista de Kahoots
-            FindObjectOfType<KahootSelector>().RefreshKahootList();
-
-            // Mostrar notificación
-            ShowNotification("JSON importado correctamente: " + fileName);
+                    // Mostrar notificación
+                    ShowNotification("Nuevo Kahoot importado: " + fileName);
+                }
+            }
         }
-        else
-        {
-            ShowNotification("No se seleccionó ningún archivo.");
-        }
-#elif UNITY_ANDROID || UNITY_IOS
-        ShowNotification("⚠️ Importar JSON desde botón no está disponible en móvil.");
-#endif
+
+        // Actualizar referencia
+        lastFiles = currentFiles;
     }
 
     void ShowNotification(string message)
     {
         notificationText.text = message;
         notificationPanel.SetActive(true);
-        Invoke("HideNotification", 3f); // Ocultar después de 3 segundos
+        Invoke(nameof(HideNotification), 3f);
     }
 
     void HideNotification()
