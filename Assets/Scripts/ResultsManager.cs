@@ -12,98 +12,52 @@ using Directory = System.IO.Directory;
 
 public class ResultsManager : MonoBehaviour
 {
-    public TMP_Text scoreText;
-    public Transform rankingContainer;
-    public GameObject rankingEntryPrefab;
-    public Button backToMenuButton;
-    public Button chooseAnotherButton;
+    public TMP_Text scoreText;          // Texto dinámico de la puntuación
+    public TMP_Text labelText;          // Texto fijo "Has obtenido la siguiente puntuación:"
+    public Button leaderboardButton;
+    public Button menuButton;
+    public Button selectorButton;
 
-    private string username;
-    private int score;
-    private KahootData kahoot;
-    private string resultsPath;
-
-    [System.Serializable]
-    public class ResultEntry
-    {
-        public string Username;
-        public int Score;
-    }
-
-    [XmlRoot("Results")]
-    public class ResultList
-    {
-        [XmlElement("Entry")]
-        public List<ResultEntry> entries = new List<ResultEntry>();
-    }
+    private int finalScore;
 
     void Start()
     {
-        username = PlayerPrefs.GetString("Username");
-        string json = PlayerPrefs.GetString("SelectedKahoot");
-        kahoot = JsonUtility.FromJson<KahootData>(json);
-        score = PlayerPrefs.GetInt("FinalScore");
+        finalScore = PlayerPrefs.GetInt("FinalScore", 0);
 
-        scoreText.text = $"Has obtenido la siguiente puntuación:\n{score}";
-        resultsPath = Application.persistentDataPath + "/Results/";
-        if (!Directory.Exists(resultsPath)) Directory.CreateDirectory(resultsPath);
+        labelText.text = "Has obtenido la siguiente puntuación:";
 
-        SaveResult();
-        ShowRanking();
+        // Animación del contador
+        StartCoroutine(AnimateScore(finalScore, 0.5f));
 
-        SaveResult();
-        ShowRanking();
+        leaderboardButton.onClick.AddListener(() => {
+            UnityEngine.SceneManagement.SceneManager.LoadScene("LeaderboardScene");
+        });
 
-        backToMenuButton.onClick.AddListener(() => {
+        menuButton.onClick.AddListener(() => {
             UnityEngine.SceneManagement.SceneManager.LoadScene("MainMenu");
         });
 
-        chooseAnotherButton.onClick.AddListener(() => {
-            UnityEngine.SceneManagement.SceneManager.LoadScene("QuizzesSelector");
+        selectorButton.onClick.AddListener(() => {
+            UnityEngine.SceneManagement.SceneManager.LoadScene("SelectorScene");
         });
 
     }
-    private void SaveResult()
+
+    IEnumerator AnimateScore(int targetScore, float duration)
     {
-        string filePath = resultsPath + kahoot.title + ".xml";
-        ResultList resultList = LoadResults(filePath);
-        resultList.entries.Add(new ResultEntry { Username = username, Score = score });
+        float elapsed = 0f;
+        int startScore = 0;
 
-        XmlSerializer serializer = new XmlSerializer(typeof(ResultList));
-        using (FileStream stream = new FileStream(filePath, FileMode.Create))
+        while (elapsed < duration)
         {
-            serializer.Serialize(stream, resultList);
+            elapsed += Time.deltaTime;
+            float t = Mathf.Clamp01(elapsed / duration);
+            int currentScore = Mathf.RoundToInt(Mathf.Lerp(startScore, targetScore, t));
+            scoreText.text = currentScore.ToString();
+            yield return null;
         }
-    }
 
-    ResultList LoadResults(string path)
-    {
-        if (!System.IO.File.Exists(path)) return new ResultList();
-
-        XmlSerializer serializer = new XmlSerializer(typeof(ResultList));
-        using (FileStream stream = new FileStream(path, FileMode.Open))
-        {
-            return (ResultList)serializer.Deserialize(stream);
-        }
-    }
-
-    private void ShowRanking()
-    {
-        string filePath = resultsPath + kahoot.title + ".xml";
-        ResultList resultList = LoadResults(filePath);
-
-        var ordered = resultList.entries.OrderByDescending(e => e.Score).ToList();
-
-        foreach (Transform child in rankingContainer) Destroy(child.gameObject);
-
-        foreach (var entry in ordered)
-        {
-            GameObject row = Instantiate(rankingEntryPrefab, rankingContainer);
-
-            TMP_Text[] texts = row.GetComponentsInChildren<TMP_Text>();
-            texts[0].text = entry.Score.ToString();      
-            texts[1].text = entry.Username;              
-        }
+        scoreText.text = targetScore.ToString();
     }
 
 }

@@ -823,11 +823,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8728faad0e8e65945a133640dc7251a0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scoreText: {fileID: 178811449}
-  rankingContainer: {fileID: 0}
-  rankingEntryPrefab: {fileID: 2664569665067417274, guid: 8f29bac63e2a497478036800081e894b, type: 3}
-  backToMenuButton: {fileID: 503490128}
-  chooseAnotherButton: {fileID: 1730461918}
+  scoreText: {fileID: 417853232}
+  labelText: {fileID: 178811449}
+  leaderboardButton: {fileID: 1705236934}
+  menuButton: {fileID: 503490128}
+  selectorButton: {fileID: 1730461918}
 --- !u!1 &650119916
 GameObject:
   m_ObjectHideFlags: 0
