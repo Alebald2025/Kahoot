@@ -57,7 +57,7 @@ public class LeaderboardManager : MonoBehaviour
 
         foreach (Transform child in rankingContainer) Destroy(child.gameObject);
 
-        if (ordered.Count == 0) return; // No hay resultados
+        if (ordered.Count == 0) return;
 
         foreach (var entry in ordered)
         {
@@ -67,10 +67,9 @@ public class LeaderboardManager : MonoBehaviour
         }
     }
 
-
     ResultList LoadResults(string path)
     {
-        if (!System.IO.File.Exists(path)) return new ResultList();
+        if (!File.Exists(path)) return new ResultList();
 
         XmlSerializer serializer = new XmlSerializer(typeof(ResultList));
         using (FileStream stream = new FileStream(path, FileMode.Open))
