@@ -31,27 +31,65 @@ public class KahootSelector : MonoBehaviour
 
     void LoadKahootsFromPersistentData()
     {
-        TextAsset[] jsonFiles = Resources.LoadAll<TextAsset>("KahootsDefault");
-        foreach (var file in jsonFiles)
+        string kahootPath = Application.persistentDataPath + "/Kahoots/";
+
+        if (!Directory.Exists(kahootPath))
         {
-            KahootData kahoot = JsonUtility.FromJson<KahootData>(file.text);
-            CreateButton(kahoot.title, file.text);
+            Directory.CreateDirectory(kahootPath);
+        }
+
+        foreach (string file in Directory.GetFiles(kahootPath, "*.json"))
+        {
+            try
+            {
+                string json = File.ReadAllText(file);
+                if (string.IsNullOrEmpty(json))
+                {
+                    ErrorReporter.Report("Archivo JSON vacío: " + file);
+                    continue;
+                }
+
+                KahootData kahoot = JsonUtility.FromJson<KahootData>(json);
+                if (kahoot == null || string.IsNullOrEmpty(kahoot.title))
+                {
+                    ErrorReporter.Report("JSON inválido o sin título: " + file);
+                    continue;
+                }
+
+                CreateButton(kahoot.title, json);
+            }
+            catch (System.Exception e)
+            {
+                ErrorReporter.Report("JSON corrupto ignorado: " + file + " - " + e.Message);
+                continue;
+            }
         }
     }
 
     void LoadKahootsFromResources()
     {
-        if (!Directory.Exists(persistentPath)) Directory.CreateDirectory(persistentPath);
-        string[] files = Directory.GetFiles(persistentPath, "*.json");
-        foreach (string path in files)
+        TextAsset[] jsonFiles = Resources.LoadAll<TextAsset>("KahootsDefault");
+
+        foreach (TextAsset jsonFile in jsonFiles)
         {
-            string json = File.ReadAllText(path);
-            if (string.IsNullOrEmpty(json))
+            try
             {
-                ErrorReporter.Report("Archivo JSON vacío o corrupto: " + path);
+                string json = jsonFile.text;
+                KahootData kahoot = JsonUtility.FromJson<KahootData>(json);
+
+                if (kahoot == null || string.IsNullOrEmpty(kahoot.title))
+                {
+                    ErrorReporter.Report("Kahoot por defecto inválido: " + jsonFile.name);
+                    continue;
+                }
+
+                CreateButton(kahoot.title, json);
             }
-            KahootData kahoot = JsonUtility.FromJson<KahootData>(json);
-            CreateButton(kahoot.title, json);
+            catch (System.Exception e)
+            {
+                ErrorReporter.Report("Error al cargar Kahoot por defecto: " + jsonFile.name + " - " + e.Message);
+                continue;
+            }
         }
     }
 

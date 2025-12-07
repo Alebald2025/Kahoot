@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
@@ -10,7 +11,7 @@ public class ErrorReportManager : MonoBehaviour
     public GameObject reportEntryPrefab;
     public TMP_Text titleText;
 
-    private string logPath => Application.persistentDataPath + "/error_log.txt";
+    private static string logPath = Application.persistentDataPath + "/error_" + DateTime.Now.ToString("yyyyMMdd_HHmmss") + ".txt";
 
     void Start()
     {
@@ -19,7 +20,7 @@ public class ErrorReportManager : MonoBehaviour
         if (!File.Exists(logPath)) return;
 
         string[] lines = File.ReadAllLines(logPath);
-        for (int i = lines.Length - 1; i >= 0; i--) // mostrar del más reciente al más antiguo
+        for (int i = lines.Length - 1; i >= 0; i--) 
         {
             GameObject entry = Instantiate(reportEntryPrefab, reportContainer);
             TMP_Text txt = entry.GetComponentInChildren<TMP_Text>();

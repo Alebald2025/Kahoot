@@ -65,7 +65,6 @@ public class ResultsManager : MonoBehaviour
         string resultsPath = Application.persistentDataPath + "/Results/";
         if (!Directory.Exists(resultsPath)) Directory.CreateDirectory(resultsPath);
 
-        // Nombre del Kahoot actual
         string kahootJson = PlayerPrefs.GetString("SelectedKahoot");
         KahootData kahoot = JsonUtility.FromJson<KahootData>(kahootJson);
         string filePath = Path.Combine(resultsPath, kahoot.title + ".xml");
@@ -84,7 +83,6 @@ public class ResultsManager : MonoBehaviour
             resultList = new ResultList();
         }
 
-        // Añadir entrada
         resultList.entries.Add(new ResultEntry { Username = username, Score = score });
 
         // Guardar XML

@@ -1,0 +1,36 @@
+{
+  "id": 6,
+  "title": "Pokémon",
+  "questions": [
+    {
+      "questionText": "¿Cuál es el Pokémon inicial de Ash?",
+      "answers": ["Charmander", "Bulbasaur", "Pikachu", "Squirtle"],
+      "correctIndex": 2,
+      "imageName": "Pikachu"
+    },
+    {
+      "questionText": "¿Qué tipo es Charizard?",
+      "answers": ["Fuego/Volador", "Dragón", "Fuego puro", "Volador puro"],
+      "correctIndex": 0,
+      "imageName": "Charizard"
+    },
+    {
+      "questionText": "¿Qué objeto sirve para capturar Pokémon?",
+      "answers": ["Poké Ball", "Ultra Ball", "Master Ball", "Todas las anteriores"],
+      "correctIndex": 3,
+      "imageName": "Pokeball"
+    },
+    {
+      "questionText": "¿Quién es el villano clásico?",
+      "answers": ["Team Rocket", "Team Aqua", "Team Magma", "Team Plasma"],
+      "correctIndex": 0,
+      "imageName": "TeamRocket"
+    },
+    {
+      "questionText": "¿Qué Pokémon es legendario?",
+      "answers": ["Mewtwo", "Pidgey", "Rattata", "Caterpie"],
+      "correctIndex": 0,
+      "imageName": "Mewtwo"
+    }
+  ]
+}

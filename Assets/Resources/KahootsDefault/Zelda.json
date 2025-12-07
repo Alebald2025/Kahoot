@@ -1,0 +1,36 @@
+{
+  "id": 4,
+  "title": "TLOZ",
+  "questions": [
+    {
+      "questionText": "¿Cómo se llama el protagonista?",
+      "answers": ["Link", "Zelda", "Ganondorf", "Epona"],
+      "correctIndex": 0,
+      "imageName": "Link"
+    },
+    {
+      "questionText": "¿Cuál es el nombre de la princesa?",
+      "answers": ["Midna", "Zelda", "Ruto", "Impa"],
+      "correctIndex": 1,
+      "imageName": "Zelda"
+    },
+    {
+      "questionText": "¿Qué objeto permite viajar en el tiempo?",
+      "answers": ["Ocarina del Tiempo", "Espada Maestra", "Trifuerza", "Arpa de las Diosas"],
+      "correctIndex": 0,
+      "imageName": "Ocarina"
+    },
+    {
+      "questionText": "¿Quién es el villano principal?",
+      "answers": ["Vaati", "Ganondorf", "Zant", "Ghirahim"],
+      "correctIndex": 1,
+      "imageName": "Ganondorf"
+    },
+    {
+      "questionText": "¿Cómo se llama el caballo de Link?",
+      "answers": ["Epona", "Roach", "Agro", "Spirit"],
+      "correctIndex": 0,
+      "imageName": "Epona"
+    }
+  ]
+}
